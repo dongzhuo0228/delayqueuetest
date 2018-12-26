@@ -42,7 +42,7 @@ public class Message implements Delayed {
     public long getDelay(TimeUnit unit) {
         return unit.convert(this.excuteTime - System.nanoTime(), TimeUnit.NANOSECONDS);
     }
-
+    //时间设定小的 优先被消费
     @Override
     public int compareTo(Delayed delayed) {
         Message o = (Message)delayed;
