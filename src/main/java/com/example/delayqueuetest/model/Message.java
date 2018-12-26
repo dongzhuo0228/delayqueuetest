@@ -45,8 +45,7 @@ public class Message implements Delayed {
 
     @Override
     public int compareTo(Delayed delayed) {
-        Message msg = (Message) delayed;
-        return Integer.valueOf(this.id) > Integer.valueOf(msg.id) ? 1
-                : (Integer.valueOf(this.id) < Integer.valueOf(msg.id) ? -1 : 0);
+        Message o = (Message)delayed;
+        return this.excuteTime -o.getExcuteTime() > 0 ? 1 : -1;
     }
 }
