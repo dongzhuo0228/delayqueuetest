@@ -16,8 +16,12 @@ public class RedisListenerConfig {
     RedisMessageListenerContainer container(RedisConnectionFactory connectionFactory) {
         RedisMessageListenerContainer container = new RedisMessageListenerContainer();
         container.setConnectionFactory(connectionFactory);
-        //redis.config   加入notify-keyspace-events Ex
-        container.addMessageListener(new TopicMessageListener(container), new PatternTopic("__keyevent@0__:expired"));
+        //
+        /**  二选1 配置方式
+         * redis.config   加入notify-keyspace-events Ex
+         *  container.addMessageListener(new TopicMessageListener(container), new PatternTopic("__keyevent@0__:expired"));
+         */
+//        container.addMessageListener(new TopicMessageListener(container), new PatternTopic("__keyevent@0__:expired"));
         return container;
     }
 }

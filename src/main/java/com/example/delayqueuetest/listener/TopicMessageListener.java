@@ -10,7 +10,7 @@ import java.time.LocalDateTime;
 /**
  * Key过期会触发这个操作  做自己的业务逻辑
  */
-//@Component
+@Component
 public class TopicMessageListener extends KeyExpirationEventMessageListener{
 
     public TopicMessageListener(RedisMessageListenerContainer listenerContainer) {
