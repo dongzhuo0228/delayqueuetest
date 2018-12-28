@@ -3,7 +3,6 @@ package com.example.delayqueuetest;
 import org.springframework.data.redis.connection.Message;
 import org.springframework.data.redis.listener.KeyExpirationEventMessageListener;
 import org.springframework.data.redis.listener.RedisMessageListenerContainer;
-import org.springframework.stereotype.Component;
 
 /**
  * Key过期会触发这个操作  做自己的业务逻辑
