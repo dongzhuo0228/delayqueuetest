@@ -3,12 +3,14 @@ package com.example.delayqueuetest.listener;
 import org.springframework.data.redis.connection.Message;
 import org.springframework.data.redis.listener.KeyExpirationEventMessageListener;
 import org.springframework.data.redis.listener.RedisMessageListenerContainer;
+import org.springframework.stereotype.Component;
 
 import java.time.LocalDateTime;
 
 /**
  * Key过期会触发这个操作  做自己的业务逻辑
  */
+//@Component
 public class TopicMessageListener extends KeyExpirationEventMessageListener{
 
     public TopicMessageListener(RedisMessageListenerContainer listenerContainer) {
