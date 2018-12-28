@@ -1,4 +1,4 @@
-package com.example.delayqueuetest;
+package com.example.delayqueuetest.config;
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.PropertyAccessor;

@@ -1,6 +1,8 @@
 package com.example.delayqueuetest;
 
+import com.example.delayqueuetest.jdkquene.Consumer;
 import com.example.delayqueuetest.model.Message;
+import com.example.delayqueuetest.service.RedisService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;

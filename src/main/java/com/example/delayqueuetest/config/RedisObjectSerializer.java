@@ -1,4 +1,4 @@
-package com.example.delayqueuetest;
+package com.example.delayqueuetest.config;
 
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.core.serializer.support.DeserializingConverter;

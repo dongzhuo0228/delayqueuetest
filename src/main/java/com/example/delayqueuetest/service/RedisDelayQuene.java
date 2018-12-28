@@ -1,5 +1,6 @@
-package com.example.delayqueuetest;
+package com.example.delayqueuetest.service;
 
+import com.example.delayqueuetest.service.RedisService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

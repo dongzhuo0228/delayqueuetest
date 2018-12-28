@@ -1,8 +1,10 @@
-package com.example.delayqueuetest;
+package com.example.delayqueuetest.listener;
 
 import org.springframework.data.redis.connection.Message;
 import org.springframework.data.redis.listener.KeyExpirationEventMessageListener;
 import org.springframework.data.redis.listener.RedisMessageListenerContainer;
+
+import java.time.LocalDateTime;
 
 /**
  * Key过期会触发这个操作  做自己的业务逻辑
@@ -21,7 +23,7 @@ public class TopicMessageListener extends KeyExpirationEventMessageListener{
     public void onMessage(Message message, byte[] pattern) {
         // 用户做自己的业务处理即可,注意message.toString()可以获取失效的key
         String expiredKey = message.toString();
-        System.err.println("过期的key"+expiredKey);
+        System.err.println(LocalDateTime.now()+"过期的key"+expiredKey);
         if(expiredKey.startsWith("Order:")){
             //如果是Order:开头的key，进行处理
         }

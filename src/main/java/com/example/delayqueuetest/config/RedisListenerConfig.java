@@ -1,5 +1,6 @@
-package com.example.delayqueuetest;
+package com.example.delayqueuetest.config;
 
+import com.example.delayqueuetest.listener.TopicMessageListener;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.redis.connection.RedisConnectionFactory;
