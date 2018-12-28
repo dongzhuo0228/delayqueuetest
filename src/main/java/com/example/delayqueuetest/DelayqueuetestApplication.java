@@ -1,6 +1,7 @@
 package com.example.delayqueuetest;
 
 import com.example.delayqueuetest.model.Message;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -13,12 +14,19 @@ import java.util.concurrent.Executors;
 public class DelayqueuetestApplication implements CommandLineRunner {
     // 创建延时队列
     DelayQueue<Message> queue = new DelayQueue<Message>();
+    @Autowired
+    RedisService redisService;
     public static void main(String[] args) {
+
+
         SpringApplication.run(DelayqueuetestApplication.class, args);
     }
 
+
     @Override
     public void run(String... args) throws Exception {
+        redisService.set("order","111",10L);
+
         // 添加延时消息,m1 延时3s
         Message m1 = new Message(1, "world", 3000);
         // 添加延时消息,m2 延时10s
