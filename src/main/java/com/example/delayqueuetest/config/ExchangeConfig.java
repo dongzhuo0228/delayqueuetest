@@ -1,9 +1,13 @@
 package com.example.delayqueuetest.config;
 
 
+import org.springframework.amqp.core.CustomExchange;
 import org.springframework.amqp.core.DirectExchange;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * 消息交换机配置  可以配置多个
@@ -23,9 +27,15 @@ public class ExchangeConfig {
      *   key: queue在该direct-exchange中的key值，当消息发送给direct-exchange中指定key为设置值时，
      *   消息将会转发给queue参数指定的消息队列
      */
-    @Bean
+  /*  @Bean
     public DirectExchange directExchange(){
         DirectExchange directExchange = new DirectExchange(RabbitMqConfig.EXCHANGE,true,false);
         return directExchange;
+    }*/
+    @Bean
+    public CustomExchange delayExchange() {
+        Map<String, Object> args = new HashMap<>();
+        args.put("x-delayed-type", "direct");
+        return new CustomExchange(RabbitMqConfig.EXCHANGEDEALY, "x-delayed-message",true, false,args);
     }
 }

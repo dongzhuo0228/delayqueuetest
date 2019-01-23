@@ -10,9 +10,14 @@ import org.springframework.stereotype.Component;
 @Component
 public class FirstConsumer {
 
-    @RabbitListener(queues = {"first-queue", "second-queue"}, containerFactory = "rabbitListenerContainerFactory")
+    @RabbitListener(queues = {"first-queue"}, containerFactory = "rabbitListenerContainerFactory")
     public void handleMessage(String message) throws Exception {
         // 处理消息
         System.out.println("FirstConsumer {} handleMessage :" + message);
+    }
+    @RabbitListener(queues = {"second-queue"}, containerFactory = "rabbitListenerContainerFactory")
+    public void handleMessage1(String message) throws Exception {
+        // 处理消息
+        System.out.println("FirstConsumer {} handleMessage1 :" + message);
     }
 }
