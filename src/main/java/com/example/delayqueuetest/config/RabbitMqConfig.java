@@ -2,9 +2,8 @@ package com.example.delayqueuetest.config;
 
 import com.example.delayqueuetest.listener.MsgSendConfirmCallBack;
 import com.example.delayqueuetest.listener.MsgSendReturnCallBack;
-import org.springframework.amqp.core.AcknowledgeMode;
-import org.springframework.amqp.core.Binding;
-import org.springframework.amqp.core.BindingBuilder;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.amqp.core.*;
 import org.springframework.amqp.rabbit.connection.ConnectionFactory;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.amqp.rabbit.listener.SimpleMessageListenerContainer;
@@ -13,6 +12,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
+@Slf4j
 public class RabbitMqConfig {
 
     /** 消息交换机的名字*/
@@ -66,7 +66,13 @@ public class RabbitMqConfig {
         simpleMessageListenerContainer.setExposeListenerChannel(true);
         simpleMessageListenerContainer.setMaxConcurrentConsumers(5);
         simpleMessageListenerContainer.setConcurrentConsumers(1);
-        simpleMessageListenerContainer.setAcknowledgeMode(AcknowledgeMode.MANUAL); //设置确认模式手工确认
+        //设置确认模式手工确认
+        simpleMessageListenerContainer.setAcknowledgeMode(AcknowledgeMode.NONE);
+        simpleMessageListenerContainer.setMessageListener(new MessageListener() {
+            @Override
+            public void onMessage(Message message) {
+            }
+        });
         return simpleMessageListenerContainer;
     }
 
@@ -81,14 +87,14 @@ public class RabbitMqConfig {
          * 必须要配置publisherConfirms或publisherReturns为true
          * 每个rabbitTemplate只能有一个confirm-callback和return-callback
          */
-        template.setConfirmCallback(msgSendConfirmCallBack());
-        template.setReturnCallback(msgSendReturnCallback());
+//        template.setConfirmCallback(msgSendConfirmCallBack());
+//        template.setReturnCallback(msgSendReturnCallback());
         /**
          * 使用return-callback时必须设置mandatory为true，或者在配置中设置mandatory-expression的值为true，
          * 可针对每次请求的消息去确定’mandatory’的boolean值，
          * 只能在提供’return -callback’时使用，与mandatory互斥
          */
-        //  template.setMandatory(true);
+//          template.setMandatory(true);
         return template;
     }
 
