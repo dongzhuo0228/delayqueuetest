@@ -38,22 +38,22 @@ public class RabbitMqConfig {
     /**
      将消息队列1和交换机进行绑定
      */
-   /* @Bean
+    @Bean
     public Binding binding_one() {
         return BindingBuilder.bind(queueConfig.firstQueue()).to(exchangeConfig.directExchange()).with(RabbitMqConfig.ROUTINGKEY1);
-    }*/
+    }
 
     /**
      * 将消息队列2和交换机进行绑定
      */
-  /*  @Bean
+    @Bean
     public Binding binding_two() {
         return BindingBuilder.bind(queueConfig.secondQueue()).to(exchangeConfig.directExchange()).with(RabbitMqConfig.ROUTINGKEY2);
-    }*/
-    @Bean
+    }
+   /* @Bean
     public Binding bindingDelay() {
         return BindingBuilder.bind(queueConfig.firstQueue()).to(exchangeConfig.delayExchange()).with(RabbitMqConfig.ROUTINGKEY1).noargs();
-    }
+    }*/
     /**
      * queue listener  观察 监听模式
      * 当有消息到达时会通知监听在对应的队列上的监听对象

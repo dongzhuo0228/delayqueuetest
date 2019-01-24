@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.time.LocalDateTime;
+import java.util.UUID;
 
 
 @RestController
@@ -25,15 +26,15 @@ public class TestRabbitMQ {
     @Autowired
     private RabbitTemplate rabbitTemplate;
     @RequestMapping("/demo")
-    public void testRabbit() {
+    public void testRabbit(String msg) {
         log.info("发送消息时间"+ LocalDateTime.now().toString());
-        rabbitTemplate.convertAndSend(RabbitMqConfig.EXCHANGEDEALY, RabbitMqConfig.ROUTINGKEY1, "11111111111", new MessagePostProcessor() {
+       /* rabbitTemplate.convertAndSend(RabbitMqConfig.EXCHANGEDEALY, RabbitMqConfig.ROUTINGKEY1, msg, new MessagePostProcessor() {
             @Override
             public Message postProcessMessage(Message message) throws AmqpException {
                 message.getMessageProperties().setHeader("x-delay",10000);
                 return message;
             }
-        });
-//        firstSender.send(UUID.randomUUID().toString(),"11111111111111111111111111");
+        });*/
+        firstSender.send(UUID.randomUUID().toString(),msg);
     }
 }
