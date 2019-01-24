@@ -3,6 +3,7 @@ package com.example.delayqueuetest;
 import com.example.delayqueuetest.jdkquene.Consumer;
 import com.example.delayqueuetest.model.Message;
 import com.example.delayqueuetest.service.RedisService;
+import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -12,6 +13,7 @@ import java.util.concurrent.DelayQueue;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
+@MapperScan("com.example.delayqueuetest.mapper")
 @SpringBootApplication
 public class DelayqueuetestApplication implements CommandLineRunner {
     // 创建延时队列
