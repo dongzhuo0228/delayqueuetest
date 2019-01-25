@@ -1,4 +1,4 @@
-package com.example.delayqueuetest;
+package com.example.delayqueuetest.jdkquene;
 
 import com.example.delayqueuetest.model.Message;
 
