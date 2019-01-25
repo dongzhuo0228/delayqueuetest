@@ -10,7 +10,7 @@ import java.time.LocalDateTime;
 /**
  * 消息消费者
  */
-@Component
+//@Component
 @Slf4j
 public class FirstConsumer {
 

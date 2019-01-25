@@ -12,7 +12,7 @@ import org.springframework.stereotype.Component;
  * 消息发送  生产者
  */
 @Slf4j
-@Component
+//@Component
 public class FirstSender {
 
     @Autowired

@@ -11,7 +11,7 @@ import java.time.LocalDateTime;
 import java.util.UUID;
 
 
-@RestController
+//@RestController
 @RequestMapping("/api")
 @Slf4j
 public class TestRabbitMQ {
