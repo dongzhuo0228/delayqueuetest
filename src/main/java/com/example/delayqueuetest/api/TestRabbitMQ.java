@@ -11,7 +11,7 @@ import java.time.LocalDateTime;
 import java.util.UUID;
 
 
-@RestController
+//@RestController
 @RequestMapping("/api")
 @Slf4j
 public class TestRabbitMQ {
@@ -22,7 +22,7 @@ public class TestRabbitMQ {
     private RabbitTemplate rabbitTemplate;
     @RequestMapping("/demo")
     public void testRabbit(String msg) {
-        log.info("发送消息时间"+ LocalDateTime.now().toString());
+//        log.info("发送消息时间"+ LocalDateTime.now().toString());
        /* rabbitTemplate.convertAndSend(RabbitMqConfig.EXCHANGEDEALY, RabbitMqConfig.ROUTINGKEY1, msg, new MessagePostProcessor() {
             @Override
             public Message postProcessMessage(Message message) throws AmqpException {
