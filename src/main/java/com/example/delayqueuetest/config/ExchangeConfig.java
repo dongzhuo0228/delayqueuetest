@@ -15,7 +15,7 @@ import java.util.Map;
  * @date 2018/5/25 15:40
  * @email 1529949535@qq.com
  */
-@Configuration
+//@Configuration
 public class ExchangeConfig {
 
     /**
