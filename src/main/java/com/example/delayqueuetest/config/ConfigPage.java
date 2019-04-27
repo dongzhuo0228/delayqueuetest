@@ -1,6 +1,5 @@
 package com.example.delayqueuetest.config;
 
-import com.github.pagehelper.PageHelper;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -13,7 +12,7 @@ import java.util.Properties;
  */
 @Configuration
 public class ConfigPage {
-    @Bean
+  /*  @Bean
     public PageHelper pageHelper(){
         PageHelper pageHelper = new PageHelper();
         Properties properties = new Properties();
@@ -23,5 +22,5 @@ public class ConfigPage {
         properties.setProperty("dialect","mysql");    //配置mysql数据库的方言
         pageHelper.setProperties(properties);
         return pageHelper;
-    }
+    }*/
 }

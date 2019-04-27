@@ -25,7 +25,7 @@ public class TopicMessageListener extends KeyExpirationEventMessageListener{
     public void onMessage(Message message, byte[] pattern) {
         // 用户做自己的业务处理即可,注意message.toString()可以获取失效的key
         String expiredKey = message.toString();
-        System.err.println(LocalDateTime.now()+"过期的key    "+expiredKey);
+        System.err.println(LocalDateTime.now()+"过期的key token失效   "+expiredKey);
         if(expiredKey.startsWith("Order:")){
             //如果是Order:开头的key，进行处理
             //取消订单

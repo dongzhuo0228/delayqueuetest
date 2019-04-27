@@ -3,6 +3,8 @@ package com.example.delayqueuetest.config;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.PropertyAccessor;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cache.interceptor.KeyGenerator;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -10,6 +12,8 @@ import org.springframework.data.redis.connection.RedisConnectionFactory;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.data.redis.serializer.Jackson2JsonRedisSerializer;
+import redis.clients.jedis.JedisPool;
+import redis.clients.jedis.JedisPoolConfig;
 
 import java.lang.reflect.Method;
 
@@ -19,8 +23,27 @@ import java.lang.reflect.Method;
  * @date 16/4/15 下午3:19.
  * @blog http://blog.didispace.com
  */
+@Slf4j
 @Configuration
 public class RedisConfig {
+
+    @Value("${spring.redis.host}")
+    private String host;
+
+    @Value("${spring.redis.port}")
+    private int port;
+
+    @Value("${spring.redis.timeout}")
+    private int timeout;
+
+    @Value("${spring.redis.password}")
+    private String password;
+
+
+
+
+
+
 
     /**
      * 生成key的策略
@@ -57,6 +80,14 @@ public class RedisConfig {
         template.afterPropertiesSet();
         return template;
     }
+    @Bean
+    public JedisPool redisPoolFactory(){
+        JedisPoolConfig jedisPoolConfig = new JedisPoolConfig();
+        JedisPool jedisPool = new JedisPool(jedisPoolConfig,host,port,timeout,password);
+        log.info("redis地址：" + host + ":" + port);
+        return  jedisPool;
+    }
+
 
 
 }

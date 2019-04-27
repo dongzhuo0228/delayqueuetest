@@ -3,6 +3,7 @@ package com.example.delayqueuetest.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.*;
 import org.springframework.stereotype.Service;
+import redis.clients.jedis.JedisPool;
 
 import java.io.Serializable;
 import java.util.List;
@@ -13,6 +14,9 @@ import java.util.concurrent.TimeUnit;
 public class RedisService {
     @Autowired
     private RedisTemplate redisTemplate;
+
+    @Autowired
+    private JedisPool jedisPool;
     /**
      * 写入缓存
      * @param key

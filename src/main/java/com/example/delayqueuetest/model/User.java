@@ -14,6 +14,7 @@ public class User implements Serializable {
 
     private String username;
     private Integer age;
+    private String token;
 
     public User(String username, Integer age) {
         this.username = username;
@@ -36,4 +37,11 @@ public class User implements Serializable {
         this.age = age;
     }
 
+    public String getToken() {
+        return token;
+    }
+
+    public void setToken(String token) {
+        this.token = token;
+    }
 }
