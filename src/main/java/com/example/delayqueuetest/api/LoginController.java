@@ -3,6 +3,7 @@ package com.example.delayqueuetest.api;
 
 import com.example.delayqueuetest.model.User;
 import com.example.delayqueuetest.service.RedisService;
+import com.example.delayqueuetest.util.Utils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,10 +18,9 @@ public class LoginController {
 
     @Autowired
     RedisService redisService;
-
     @RequestMapping("/login")
     public User login(@RequestBody User user){
-        String token = user.getUsername() + new Date().toString();
+        String token = Utils.createToken(user.getUsername());
         redisService.set(token,token,60L);
         user.setToken(token);
         return user;
