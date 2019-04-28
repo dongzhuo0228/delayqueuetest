@@ -15,7 +15,9 @@ import javax.servlet.http.HttpServletResponse;
 public class LoginInterceptor extends HandlerInterceptorAdapter {
 
    RedisService redisService;
+
    String privateKeyString;
+
    public LoginInterceptor( RedisService redisService,String privateKeyString){
        this.privateKeyString = privateKeyString;
        this.redisService = redisService;
