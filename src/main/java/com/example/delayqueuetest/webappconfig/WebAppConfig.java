@@ -4,6 +4,7 @@ import com.example.delayqueuetest.Interceptor.LoginInterceptor;
 import com.example.delayqueuetest.filter.HttpServletRequestReplacedFilter;
 import com.example.delayqueuetest.service.RedisService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -15,10 +16,11 @@ public class WebAppConfig extends WebMvcConfigurerAdapter  {
 
     @Autowired
     RedisService redisService;
-
+    @Value("${privatekeystring}")
+    String privateKeyString;
     @Override
     public void addInterceptors(InterceptorRegistry registry){
-        registry.addInterceptor(new LoginInterceptor(redisService)).excludePathPatterns("/login");
+        registry.addInterceptor(new LoginInterceptor(redisService,privateKeyString)).excludePathPatterns("/login");
     }
     @Bean
     public FilterRegistrationBean httpServletRequestReplacedRegistration() {
