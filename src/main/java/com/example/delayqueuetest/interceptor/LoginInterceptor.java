@@ -1,4 +1,4 @@
-package com.example.delayqueuetest.Interceptor;
+package com.example.delayqueuetest.interceptor;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;

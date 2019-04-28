@@ -1,6 +1,6 @@
 package com.example.delayqueuetest.webappconfig;
 
-import com.example.delayqueuetest.Interceptor.LoginInterceptor;
+import com.example.delayqueuetest.interceptor.LoginInterceptor;
 import com.example.delayqueuetest.filter.HttpServletRequestReplacedFilter;
 import com.example.delayqueuetest.service.RedisService;
 import org.springframework.beans.factory.annotation.Autowired;
