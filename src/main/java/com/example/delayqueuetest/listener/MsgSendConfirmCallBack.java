@@ -18,4 +18,6 @@ public class MsgSendConfirmCallBack implements RabbitTemplate.ConfirmCallback {
             System.out.println("消息消费失败:" + cause+"\n重新发送");
         }
     }
+
+
 }

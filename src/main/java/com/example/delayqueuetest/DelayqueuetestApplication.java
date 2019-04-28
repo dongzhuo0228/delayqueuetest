@@ -1,7 +1,5 @@
 package com.example.delayqueuetest;
 
-import com.alibaba.fastjson.JSON;
-import com.example.delayqueuetest.jdkquene.Consumer;
 import com.example.delayqueuetest.model.Message;
 import com.example.delayqueuetest.service.RedisService;
 import lombok.extern.slf4j.Slf4j;
@@ -10,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.data.elasticsearch.repository.config.EnableElasticsearchRepositories;
+import org.springframework.scheduling.annotation.EnableAsync;
 import redis.clients.jedis.JedisPool;
 
 import java.util.ArrayList;
@@ -18,6 +18,8 @@ import java.util.concurrent.DelayQueue;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
+@EnableElasticsearchRepositories("com.example.delayqueuetest.repository")
+@EnableAsync
 @MapperScan("com.example.delayqueuetest.mapper")
 @SpringBootApplication
 @Slf4j
@@ -29,6 +31,7 @@ public class DelayqueuetestApplication implements CommandLineRunner {
     @Autowired
     JedisPool jedisPool;
     public static void main(String[] args) {
+        System.setProperty("es.set.netty.runtime.available.processors", "false");
         SpringApplication.run(DelayqueuetestApplication.class, args);
     }
     @Override
