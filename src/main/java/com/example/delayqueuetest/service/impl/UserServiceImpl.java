@@ -1,7 +1,10 @@
 package com.example.delayqueuetest.service.impl;
 
+import com.example.delayqueuetest.mapper.DemoMapper;
+import com.example.delayqueuetest.mapper.QuestionMapper;
 import com.example.delayqueuetest.model.User;
 import com.example.delayqueuetest.repository.CityRepository;
+import com.example.delayqueuetest.service.QuestionService;
 import com.example.delayqueuetest.service.UserService;
 import lombok.extern.slf4j.Slf4j;
 import org.elasticsearch.index.query.QueryBuilders;
@@ -16,19 +19,32 @@ import org.springframework.data.elasticsearch.core.query.NativeSearchQueryBuilde
 import org.springframework.data.elasticsearch.core.query.SearchQuery;
 import org.springframework.data.elasticsearch.repository.config.EnableElasticsearchRepositories;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
 @Service
 @Slf4j
+@Transactional
 public class UserServiceImpl implements UserService {
 
     @Autowired
     private CityRepository cityRepository;
 
+    @Autowired
+    private DemoMapper userDao;
+
+    @Autowired
+    private QuestionService questionService;
     @Override
     public void add(User user) {
         cityRepository.save(user);
+    }
+
+    @Override
+    public void save(User user) {
+        userDao.save(user);
+        int i = 1/0;
     }
 
     @Override

@@ -1,6 +1,7 @@
 package com.example.delayqueuetest.api;
 
 import com.example.delayqueuetest.model.User;
+import com.example.delayqueuetest.service.QuestionService;
 import com.example.delayqueuetest.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -15,10 +16,13 @@ public class DemoController {
 
     @Autowired
     private UserService userService;
+    @Autowired
+    private QuestionService questionService;
 
     @RequestMapping(value = "/api/save/user", method = RequestMethod.POST)
     public void createUser(@RequestBody User user) {
-         userService.add(user);
+         userService.save(user);
+         questionService.save();
     }
 
     @RequestMapping(value = "/api/save/search", method = RequestMethod.POST)

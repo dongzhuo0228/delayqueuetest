@@ -10,6 +10,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.data.elasticsearch.repository.config.EnableElasticsearchRepositories;
 import org.springframework.scheduling.annotation.EnableAsync;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
 import redis.clients.jedis.JedisPool;
 
 import java.util.ArrayList;
@@ -22,6 +23,7 @@ import java.util.concurrent.Executors;
 @EnableAsync
 @MapperScan("com.example.delayqueuetest.mapper")
 @SpringBootApplication
+@EnableTransactionManagement
 @Slf4j
 public class DelayqueuetestApplication implements CommandLineRunner {
     // 创建延时队列

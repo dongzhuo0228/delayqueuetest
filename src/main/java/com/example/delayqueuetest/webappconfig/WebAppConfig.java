@@ -20,7 +20,7 @@ public class WebAppConfig extends WebMvcConfigurerAdapter {
     String privateKeyString;
     @Override
     public void addInterceptors(InterceptorRegistry registry){
-        registry.addInterceptor(new LoginInterceptor(redisService,privateKeyString)).excludePathPatterns("/login");
+        //registry.addInterceptor(new LoginInterceptor(redisService,privateKeyString)).excludePathPatterns("/login");
     }
     @Bean
     public FilterRegistrationBean httpServletRequestReplacedRegistration() {

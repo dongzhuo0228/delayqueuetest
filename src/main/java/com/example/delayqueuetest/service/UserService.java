@@ -8,6 +8,7 @@ public interface UserService {
 
     void add(User user);
 
+    void save(User user);
 
     List<User> searchCity(Integer pageNumber, Integer pageSize, String searchContent);
 }
